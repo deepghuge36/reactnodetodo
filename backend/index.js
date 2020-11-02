@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const passport = require('passport')
+
 const app = express();
 
 // bodyParser middleware
@@ -12,17 +12,17 @@ app.use(bodyParser.urlencoded({
 // parse application/json
 app.use(bodyParser.json());
 
-passport.initialize()
-require("./config/passport")(passport);
 
 // use the database
 const DBConnect = require('./config/DBConnect');
 DBConnect();
 
 // use the router path
+const todo = require('./routes/todo')
+app.use('/',todo);
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, function () {
   console.log(`Server Running on ${PORT} or Click on http://localhost:${PORT}`);
