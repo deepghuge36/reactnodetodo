@@ -19,6 +19,9 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+   "server": "cd backend && nodemon index.js",
+   "client": "npm start",
+   "dev": "concurrently \"npm run client\" \"npm run server\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
